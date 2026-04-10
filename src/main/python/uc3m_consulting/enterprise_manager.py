@@ -34,6 +34,8 @@ class EnterpriseManager:
 
         if not self.is_valid_md5(project_id):
             raise EnterpriseManagementException("JSON has invalid values")
+        if not re.fullmatch(r"[a-zA-Z0-9]{8}\.(pdf|docx|xlsx)", filename):
+            raise EnterpriseManagementException("JSON has invalid values")
         # Create the document object and get the signature
         my_doc = ProjectDocument(project_id, filename)
         signature = my_doc.document_signature
