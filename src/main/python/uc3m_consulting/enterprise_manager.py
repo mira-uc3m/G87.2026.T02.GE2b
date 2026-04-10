@@ -22,9 +22,11 @@ class EnterpriseManager:
                 data = json.load(f)
         except Exception:
             raise EnterpriseManagementException("The file is not JSON formatted.")
-
-        project_id = data["PROJECT_ID"]
-        filename = data["FILENAME"]
+        try:
+            project_id = data["PROJECT_ID"]
+            filename = data["FILENAME"]
+        except Exception:
+            raise EnterpriseManagementException("JSON does not have the expected structure.")
 
         # Create the document object and get the signature
         my_doc = ProjectDocument(project_id, filename)
