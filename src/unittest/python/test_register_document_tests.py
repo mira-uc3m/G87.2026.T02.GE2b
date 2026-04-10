@@ -2,12 +2,13 @@
 import unittest
 import os
 import csv
-import io
 import re
 from ...main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
-from ...main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from ...main.python.uc3m_consulting.enterprise_management_exception import (
+    EnterpriseManagementException)
 
 class TestRegisterProject(unittest.TestCase):
+    """class for testing the register_project method"""
     def setUp(self):
         self.manager = EnterpriseManager()
         self.input_folder = "./input/"
