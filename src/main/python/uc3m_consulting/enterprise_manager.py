@@ -1,6 +1,7 @@
 """Module """
 import json
 import os
+import re
 from . import ProjectDocument
 from .enterprise_management_exception import EnterpriseManagementException
 
@@ -15,6 +16,9 @@ class EnterpriseManager:
         OR FALSE IN OTHER CASE"""
         return True
 
+    def is_valid_md5(self, s: str) -> bool:
+        return isinstance(s, str) and bool(re.fullmatch(r"[a-fA-F0-9]{32}", s))
+
     def register_document(self, input_file: str):
         # Load the file
         try:
@@ -28,6 +32,8 @@ class EnterpriseManager:
         except Exception:
             raise EnterpriseManagementException("JSON does not have the expected structure.")
 
+        if not self.is_valid_md5(project_id):
+            raise EnterpriseManagementException("JSON has invalid values")
         # Create the document object and get the signature
         my_doc = ProjectDocument(project_id, filename)
         signature = my_doc.document_signature
