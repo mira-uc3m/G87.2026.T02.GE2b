@@ -3,6 +3,7 @@ import unittest
 import os
 import csv
 import io
+import re
 from ...main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
 from ...main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
@@ -36,13 +37,12 @@ class TestRegisterProject(unittest.TestCase):
 
 def generate_tests():
     """Reads the CSV and attaches test methods to TestRegisterProject."""
-    csv_path = os.path.join(os.path.dirname(__file__), "../../docs/test_cases_method2.csv")
+    csv_path = os.path.join(os.path.dirname(__file__), "../../docs/test_cases_v2.csv")
 
     if not os.path.exists(csv_path):
         return
 
     with open(csv_path, newline='', encoding='utf-8') as csvfile:
-        # Note: Using your specific header names
         reader = csv.DictReader(csvfile)
         for row in reader:
             test_id = row['ID TEST']
@@ -50,11 +50,13 @@ def generate_tests():
             file_path = row['FILE PATH']
             file_content = row['FILE CONTENT']
             test_type = row['TYPE (DUPLICATION / DELETION / MODIFICATION / VALID)']
+            expected_result = row['EXPECTED RESULT']
 
             # Create the test function closure
-            def make_test(path=file_path, content=file_content, t_type=test_type, tid=test_id, desc=description):
+            def make_test(path=file_path, content=file_content, t_type=test_type,
+                          tid=test_id, desc=description, expected=expected_result):
                 def test(self):
-                    # 1. Setup the file (handles TC04 empty string automatically)
+                    # 1. Setup the file
                     full_path = self.create_test_file(path, content)
 
                     # 2. Execute and Verify
@@ -62,9 +64,17 @@ def generate_tests():
                         result = self.manager.register_document(full_path)
                         self.assertEqual(len(result), 64, f"Failed {tid}: Expected 64-char hash.")
                     else:
+                        # Extract the inner message from: EnterpriseManagementException("Message")
+                        # This regex finds everything between the first (" and the last ")
+                        match = re.search(r'\("(.*)"\)', expected)
+                        expected_msg = match.group(1) if match else expected
+
                         with self.assertRaises(EnterpriseManagementException) as cm:
                             self.manager.register_document(full_path)
-                        self.assertEqual(str(cm.exception), "Invalid json", f"Failed {tid}: Error message mismatch.")
+
+                        # Compare the actual exception message to the extracted expected message
+                        self.assertEqual(str(cm.exception), expected_msg,
+                                         f"Failed {tid}: Error message mismatch.")
 
                 test.__doc__ = f"{tid}: {desc}"
                 return test

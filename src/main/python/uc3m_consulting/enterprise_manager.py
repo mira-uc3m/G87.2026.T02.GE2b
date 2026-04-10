@@ -2,6 +2,7 @@
 import json
 import os
 from . import ProjectDocument
+from .enterprise_management_exception import EnterpriseManagementException
 
 class EnterpriseManager:
     """Class for providing the methods for managing the orders"""
@@ -16,8 +17,11 @@ class EnterpriseManager:
 
     def register_document(self, input_file: str):
         # Load the file
-        with open(input_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            with open(input_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            raise EnterpriseManagementException("The file is not JSON formatted.")
 
         project_id = data["PROJECT_ID"]
         filename = data["FILENAME"]
