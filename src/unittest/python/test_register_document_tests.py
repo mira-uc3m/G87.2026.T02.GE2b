@@ -12,7 +12,6 @@ class TestRegisterProject(unittest.TestCase):
         self.input_folder = "./input/"
         self.storage_file = "all_documents.json"
 
-        # Create input directory if it doesn't exist
         if not os.path.exists(self.input_folder):
             os.makedirs(self.input_folder)
 
