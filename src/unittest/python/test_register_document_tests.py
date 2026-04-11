@@ -3,9 +3,8 @@ import unittest
 import os
 import csv
 import re
-from ...main.python.uc3m_consulting.enterprise_manager import EnterpriseManager
-from ...main.python.uc3m_consulting.enterprise_management_exception import (
-    EnterpriseManagementException)
+from uc3m_consulting import EnterpriseManager
+from uc3m_consulting import (EnterpriseManagementException)
 
 class TestRegisterProject(unittest.TestCase):
     """class for testing the register_project method"""
