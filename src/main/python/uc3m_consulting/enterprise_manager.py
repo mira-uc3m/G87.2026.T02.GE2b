@@ -45,15 +45,23 @@ class EnterpriseManager:
         signature = my_doc.document_signature
 
         # Save to all_documents.json
-        storage_file = "all_documents.json"
+        storage_file = "./output/all_documents.json"
         all_docs = []
-        if os.path.exists(storage_file):
+
+        try:
             with open(storage_file, "r", encoding="utf-8") as f:
                 all_docs = json.load(f)
+        except FileNotFoundError:
+            all_docs = []  # file doesn't exist yet → start fresh
+        except json.JSONDecodeError as exc:
+            raise EnterpriseManagementException("The file is not JSON formatted.") from exc
 
         all_docs.append(my_doc.to_json())
 
-        with open(storage_file, "w", encoding="utf-8") as f:
-            json.dump(all_docs, f, indent=4)
+        try:
+            with open(storage_file, "w", encoding="utf-8") as f:
+                json.dump(all_docs, f, indent=4)
+        except Exception as exc:
+            raise EnterpriseManagementException("2 The file is not JSON formatted.") from exc
 
         return signature

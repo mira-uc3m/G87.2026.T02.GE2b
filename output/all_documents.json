@@ -1,0 +1,26 @@
+[
+    {
+        "alg": "SHA-256",
+        "type": "DEPOSIT",
+        "project_id": "d2a7ca3223cd13b9a61f0e092aaaa140",
+        "file_name": "AB12CD34.pdf",
+        "register_date": 1776355994.735268,
+        "document_signature": "d7f20b99f66cca4edacd35430400b32dded5c60a18b2111e41e6eb94304de243"
+    },
+    {
+        "alg": "SHA-256",
+        "type": "DEPOSIT",
+        "project_id": "d2a7ca3223cd13b9a61f0e092aaaa140",
+        "file_name": "AB12CD34.docx",
+        "register_date": 1776355994.736556,
+        "document_signature": "a402186e26cdf5c958a28659ef5aeb1ce9268ff9cad9a173d3d41cd9834dab0a"
+    },
+    {
+        "alg": "SHA-256",
+        "type": "DEPOSIT",
+        "project_id": "d2a7ca3223cd13b9a61f0e092aaaa140",
+        "file_name": "AB12CD34.xlsx",
+        "register_date": 1776355994.737124,
+        "document_signature": "88cb0d8cafc85431804f09e2c6f0eba155b98acfdcb1a2e676177df332910086"
+    }
+]
