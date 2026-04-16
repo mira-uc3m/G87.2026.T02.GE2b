@@ -27,6 +27,8 @@ class EnterpriseManager:
         try:
             with open(input_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
+        except FileNotFoundError:
+            raise EnterpriseManagementException("Input file not found.")
         except Exception as exc:
             raise EnterpriseManagementException("The file is not JSON formatted.") from exc
         try:
