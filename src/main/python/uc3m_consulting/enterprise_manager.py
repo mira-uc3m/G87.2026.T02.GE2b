@@ -54,7 +54,7 @@ class EnterpriseManager:
         except FileNotFoundError:
             all_docs = []  # file doesn't exist yet → start fresh
         except json.JSONDecodeError as exc:
-            raise EnterpriseManagementException("The file is not JSON formatted.") from exc
+            raise EnterpriseManagementException("Input file not found.") from exc
 
         all_docs.append(my_doc.to_json())
 
@@ -62,6 +62,6 @@ class EnterpriseManager:
             with open(storage_file, "w", encoding="utf-8") as f:
                 json.dump(all_docs, f, indent=4)
         except Exception as exc:
-            raise EnterpriseManagementException("2 The file is not JSON formatted.") from exc
+            raise EnterpriseManagementException("Input file not found.") from exc
 
         return signature
