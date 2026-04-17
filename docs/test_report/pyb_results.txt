@@ -1,0 +1,43 @@
+PyBuilder version 0.13.18
+Build started at 2026-04-17 22:20:38
+------------------------------------------------------------
+[INFO]  Building G8X.2026.TXX.EG2 version 1.0.dev0
+[INFO]  Executing build in /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b
+[INFO]  Going to execute task publish
+[INFO]  Processing plugin packages 'coverage>=6.0' to be installed with {'upgrade': True}
+[INFO]  Processing plugin packages 'unittest-xml-reporting>=3.0.4' to be installed with {'upgrade': True}
+[INFO]  Creating target 'build' VEnv in '/Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/target/venv/build/cpython-3.12.5.final.0'
+[INFO]  Creating target 'test' VEnv in '/Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/target/venv/test/cpython-3.12.5.final.0'
+[INFO]  Requested coverage for tasks: pybuilder.plugins.python.unittest_plugin:run_unit_tests
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/src/unittest/python
+[INFO]  Executed 74 unit tests
+[INFO]  All unit tests passed.
+[INFO]  Building distribution in /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/target/dist/G8X.2026.TXX.EG2-1.0.dev0
+[INFO]  Copying scripts to /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/target/dist/G8X.2026.TXX.EG2-1.0.dev0/scripts
+[INFO]  Collecting coverage information for 'pybuilder.plugins.python.unittest_plugin:run_unit_tests'
+[WARN]  ut_coverage_branch_threshold_warn is 0 and branch coverage will not be checked
+[WARN]  ut_coverage_branch_partial_threshold_warn is 0 and partial branch coverage will not be checked
+[INFO]  Running unit tests
+[INFO]  Executing unit tests from Python modules in /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b/src/unittest/python
+[INFO]  Executed 74 unit tests
+[INFO]  All unit tests passed.
+[WARN]  Test coverage below 70% for uc3m_consulting.enterprise_project: 59%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests coverage is 74%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests branch coverage is 100%
+[INFO]  Overall pybuilder.plugins.python.unittest_plugin.run_unit_tests partial branch coverage is 100%
+[WARN]  Test coverage below 70% for uc3m_consulting.enterprise_project: 59%
+[INFO]  Overall G8X.2026.TXX.EG2 coverage is 74%
+[INFO]  Overall G8X.2026.TXX.EG2 branch coverage is 100%
+[INFO]  Overall G8X.2026.TXX.EG2 partial branch coverage is 100%
+------------------------------------------------------------
+BUILD SUCCESSFUL
+------------------------------------------------------------
+Build Summary
+             Project: G8X.2026.TXX.EG2
+             Version: 1.0.dev0
+      Base directory: /Users/mira_suthakar/IdeaProjects/G87.2026.T02.GE2b
+        Environments: 
+               Tasks: prepare [1214 ms] compile_sources [0 ms] run_unit_tests [348 ms] package [2 ms] run_integration_tests [0 ms] verify [0 ms] coverage [515 ms] publish [0 ms]
+Build finished at 2026-04-17 22:20:41
+Build took 2 seconds (2749 ms)
